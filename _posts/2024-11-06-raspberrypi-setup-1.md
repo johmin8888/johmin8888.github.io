@@ -8,7 +8,7 @@ tags: [Hardware, Raspberry Pi]
 pin: false
 math: false
 image:
-  path: /media/20241106/rpi4b.jpg
+  path: /media/20241106-raspberrypi-setup-1/rpi4b.jpg
   alt: Raspberry Pi 4 Model B
 ---
 
@@ -34,7 +34,7 @@ According to [the official documentation](https://www.raspberrypi.com/documentat
 
 ### 1.2. Prepare the SD card reader and read the SD card
 
-![A microSD card and its reader](/media/20241106/sd-card-reader.jpg){: width="500" height="500" }
+![A microSD card and its reader](/media/20241106-raspberrypi-setup-1/sd-card-reader.jpg){: width="500" height="500" }
 _A MicroSD Card and Its Reader_
 
 As shown in the picture, the reader has two slots for different SD card sizes. 
@@ -46,7 +46,7 @@ As shown in the picture, the reader has two slots for different SD card sizes.
 
 ### 1.3. Format the SD card
 
-![Default Drive Formatter](/media/20241106/format-sd-card.png)
+![Default Drive Formatter](/media/20241106-raspberrypi-setup-1/format-sd-card.png)
 _Drive Formatter on Windows 10_
 
 > The SD card must be formatted to **FAT32**.
@@ -95,7 +95,7 @@ For "Other general-purpose OS" options:
 
 *I personally selected **Raspberry Pi OS (64-bit)**, the default option, for easier adaptation to a development environment.*
 
-![RPi Imager](/media/20241106/rpi-imager.png)
+![RPi Imager](/media/20241106-raspberrypi-setup-1/rpi-imager.png)
 _Raspberry Pi Imager_
 
 
@@ -103,7 +103,7 @@ _Raspberry Pi Imager_
 
 When the OS customization prompt appears, you can edit settings such as username, password, WiFi, locale, SSH, etc. To connect the Raspberry Pi remotely using SSH, follow the steps below after selecting "edit settings"; otherwise, choose "no" to continue without customization.
 
-![RPi Imager configuration](/media/20241106/rpi-imager-config.png)
+![RPi Imager configuration](/media/20241106-raspberrypi-setup-1/rpi-imager-config.png)
 _Enabling SSH from configurations on the imager_
 
 - This configuration enables SSH via the address `username@raspberrypi.local`. To enable SSH, the username and password must be set.
@@ -114,7 +114,7 @@ _Enabling SSH from configurations on the imager_
 
 ### E.1. Unable to read the microSD card on your computer
 
-![SD card reading error](/media/20241106/sd-card-reading-error.png)
+![SD card reading error](/media/20241106-raspberrypi-setup-1/sd-card-reading-error.png)
 _Prompt when SD card has a reading error_
 
 Sometimes, the microSD card drive won’t be recognized as shown above. Follow these steps to troubleshoot:
@@ -127,14 +127,14 @@ Sometimes, the microSD card drive won’t be recognized as shown above. Follow t
    - Right-click the Windows logo, then find `Disk Management`{: .filepath }.
    - Type `Create and format hard disk partitions`{: .filepath } or `Disk Management`{: .filepath } in the search bar. *If the drive is recognized but labeled "Unallocated," refer to Section [E.3](#e3-unable-to-create-primary-partition).*
 
-   ![Find drive recognition from Disk Management](/media/20241106/disk-management-unallocated.png) 
+   ![Find drive recognition from Disk Management](/media/20241106-raspberrypi-setup-1/disk-management-unallocated.png) 
    _`Disk Management`{: .filepath } window showing a detected microSD card_
 
 4. Update USB drivers in `Device Manager`{: .filepath }.
    - Right-click the Windows logo, then find `Device Manager`{: .filepath }.
    - Type `Device Manager`{: .filepath } in the search bar.
 
-   ![Update USB drivers from Device Manager](/media/20241106/device-manager-usb-driver-update.png)
+   ![Update USB drivers from Device Manager](/media/20241106-raspberrypi-setup-1/device-manager-usb-driver-update.png)
    _`Device Manager`{: .filepath } window instructing to "update driver"_
 
 5. Try a different SD card mount or slot, or use another computer with an SD card slot on the mainboard. Some reports suggest that USB 3.0 may not detect microSD cards. 
@@ -167,7 +167,7 @@ If the SD card cannot create a partition on the selected volume, reinstall the v
 4. Right-click "Unallocated" volume.
 5. Select "New Simple Volume" to start the "New Simple Volume Wizard."
 
-   ![Create New Simple Volume](/media/20241106/disk-management-new-simple-volume.png)
+   ![Create New Simple Volume](/media/20241106-raspberrypi-setup-1/disk-management-new-simple-volume.png)
    _`Disk Management`{: .filepath } window to create a "New Simple Volume" on the "Unallocated" volume_
 
 6. Type the maximum disk space in MB in "Simple volume size in MB" (*usually set by default*).
@@ -178,7 +178,7 @@ If the SD card cannot create a partition on the selected volume, reinstall the v
    - Check "Perform a quick format".
 9. Complete the wizard, then check if the card is correctly formatted.
 
-    ![Correctly formatted](/media/20241106/disk-management-correctly-formatted.png)
+    ![Correctly formatted](/media/20241106-raspberrypi-setup-1/disk-management-correctly-formatted.png)
     _`Disk Management`{: .filepath } window after formatting is completed_
 
 ## U. Useful Links
