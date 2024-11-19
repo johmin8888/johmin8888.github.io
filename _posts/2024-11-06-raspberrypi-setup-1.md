@@ -151,7 +151,7 @@ Sometimes, the microSD card drive won’t be recognized as shown above. Follow t
 2. Check if the microSD card is over 32GB. Windows 10 has issues with microSD cards larger than 32GB.
 3. Check if the microSD card appears in **Disk Management**.
    - Right-click the Windows logo, then find **Disk Management**.
-   - Type `Create and format hard disk partitions` or `Disk Management` in the search bar. *If the drive is recognized but labeled "Unallocated," refer to Section [E.3](#e3-unable-to-create-primary-partition).*
+   - Type `Create and format hard disk partitions` or `Disk Management` in the search bar. *If the drive is recognized but labeled "Unallocated," refer to Section [E.2.3](#e23-using-disk-management-to-utilize-formatting-wizard).*
 
    ![Find drive recognition from Disk Management](/media/20241106-raspberrypi-setup-1/disk-management-unallocated.png) 
    _**Disk Management** window showing a detected microSD card_
