@@ -2,7 +2,7 @@
 title: Raspberry Pi 4B Setup 2 - Gadget Mode
 description: This post provides instructions on enabling USB gadget mode on the Raspberry Pi 4 Model B via Ethernet, allowing it to function as a network adapter connected to a computer using only a USB-C cable, without a monitor, mouse, or keyboard.
 author: [johmin8888]
-date: 2024-11-20 01:45:00 +09:00
+date: 2024-11-20 02:20:00 +09:00
 categories: [Hardware, Raspberry Pi]
 tags: [Hardware, Raspberry Pi]
 pin: false
@@ -38,7 +38,7 @@ The Raspberry Pi OS is not configured for 'USB Gadget Mode' by default. To enabl
    > You will see `/bootfs`{: .filepath } or `/boot`{: .filepath }, which is accessible, and `/USB Drive`{: .filepath }, which is not. This is normal on Windows, as it cannot read Linux-based file systems.
    {: .prompt-info }
 
-    ![RPi OS Volumes](/media/20241111-raspberrypi-setup-2/rpi-os-volumes.png){: .shadow }
+    ![RPi OS Volumes](/media/20241120-raspberrypi-setup-2/rpi-os-volumes.png){: .shadow }
     _Two drives appear after the OS installation is completed on the microSD card._
 
 2. Open the file `/bootfs/config.txt`{: .filepath } and add the following line at the end. Save and close the file.
@@ -72,7 +72,7 @@ The Raspberry Pi OS is not configured for 'USB Gadget Mode' by default. To enabl
    > You can create this file by renaming a text file anad removing the `.txt` extension using a text editor like VSCode.
    {: .prompt-tip }
 
-    ![SSH File on RPi4B](/media/20241111-raspberrypi-setup-2/ssh-file.png){: .shadow }
+    ![SSH File on RPi4B](/media/20241120-raspberrypi-setup-2/ssh-file.png){: .shadow }
     _Creating the `ssh`{: .filepath }_
 
 ## 2. Connect RPi4B with a USB-C cable
@@ -82,7 +82,7 @@ The Raspberry Pi OS is not configured for 'USB Gadget Mode' by default. To enabl
    > Bonjour Services is an application developed by Apple that improves USB communication between Windows and Linux-based computers. It allows you to use `ssh {username}@{hostname}.local` instead of an IP address.
    {: .prompt-info }
 
-    ![Bonjour Services Download](/media/20241111-raspberrypi-setup-2/bonjour-services-download.png){: .shadow }
+    ![Bonjour Services Download](/media/20241120-raspberrypi-setup-2/bonjour-services-download.png){: .shadow }
     _**Bonjour Print Services for Windows** download page_
 
 2. Insert the microSD card into the Raspberry Pi.
@@ -93,7 +93,7 @@ The Raspberry Pi OS is not configured for 'USB Gadget Mode' by default. To enabl
 
 4. Open **Device Manager** on your computer and verify that "USB Ethernet/RNDIS Gadget" is listed under the "Network adapters" section.
 
-    ![Successful Detection on Device Manager](/media/20241111-raspberrypi-setup-2/device-manager-successfully-detected.png)
+    ![Successful Detection on Device Manager](/media/20241120-raspberrypi-setup-2/device-manager-successfully-detected.png)
     _Successful detection of the device in **Device Manager**_
 
     > If the device is detected under "Ports (COM & LPT)" instead of "Network adapters," follow the instructions in Section [E.1](#e1-device-is-detected-under-the-ports-com--lpt-tree) to install the **RNDIS/Ethernet Gadget** driver.
@@ -118,7 +118,7 @@ You can use three methods to establish an SSH connection on Windows:
 2. Search for `Add an optional feature` in the search bar.
 3. Look for **OpenSSH Client**.
 
-    ![OpenSSH Client Installation](/media/20241111-raspberrypi-setup-2/openssh-client-install.png)
+    ![OpenSSH Client Installation](/media/20241120-raspberrypi-setup-2/openssh-client-install.png)
     _**OpenSSH Client** installation page in **Settings**_
 
 4. Install it.
@@ -139,14 +139,14 @@ Once installed, follow these steps to use SSH:
 3. In the "Host Name (or IP address)" field, type `{hostname}.local` as configured during the OS setup.
 4. Ensure the port is set to `22` and the connection type is `SSH`.
 
-    ![PuTTY Start Page](/media/20241111-raspberrypi-setup-2/putty-start.png)
+    ![PuTTY Start Page](/media/20241120-raspberrypi-setup-2/putty-start.png)
     _Configuration page in **PuTTY**_
 
 5. Click "Open."
 6. When prompted with "login as:", enter `{username}`.
 7. Enter the password you set during the OS installation on the Raspberry Pi.
 
-    ![Successful Login Prompt on PuTTY](/media/20241111-raspberrypi-setup-2/putty-successful-login.png)
+    ![Successful Login Prompt on PuTTY](/media/20241120-raspberrypi-setup-2/putty-successful-login.png)
     _Successful login prompt in **PuTTY**_
 
 ### 3.3. Using VNC
@@ -163,24 +163,24 @@ Before using VNC, enable the VNC mode on the Raspberry Pi by accessing its confi
 1. Connect to the Raspberry Pi via SSH.
 2. Run the command: `sudo raspi-config`.
 
-    ![Raspberry Pi Configuration Prompt on PuTTY](/media/20241111-raspberrypi-setup-2/putty-raspi-config.png)
+    ![Raspberry Pi Configuration Prompt on PuTTY](/media/20241120-raspberrypi-setup-2/putty-raspi-config.png)
     _Raspberry Pi configuration prompt in **PuTTY**_
 
 3. In the "Raspberry Pi Software Configuration Tool (raspi-config)" menu, navigate to "Interface Options."
    > Use the arrow keys to navigate and press Enter to select. Use the arrow keys to switch between "\<Select>", "\<Back>", and "\<Finish>".
    {: .prompt-tip }
 
-    ![raspi-config Interface Options 1](/media/20241111-raspberrypi-setup-2/raspi-config-interface-options-1.png)
+    ![raspi-config Interface Options 1](/media/20241120-raspberrypi-setup-2/raspi-config-interface-options-1.png)
     _`raspi-config` menu page_
 
 4. Select "VNC."
 
-    ![raspi-config Interface Options 2](/media/20241111-raspberrypi-setup-2/raspi-config-interface-options-2.png)
+    ![raspi-config Interface Options 2](/media/20241120-raspberrypi-setup-2/raspi-config-interface-options-2.png)
     _`raspi-config` interface options page_
 
 5. When prompted, "Would you like the VNC Server to be enabled?", select "\<Yes>."
 
-    ![raspi-config Enabling VNC](/media/20241111-raspberrypi-setup-2/raspi-config-enabling-vnc.png)
+    ![raspi-config Enabling VNC](/media/20241120-raspberrypi-setup-2/raspi-config-enabling-vnc.png)
     _Enabling VNC mode_
 
 6. Select "\<Finish>" to return to the terminal.
@@ -193,13 +193,13 @@ Once VNC mode is enabled, use the **RealVNC Viewer** client to connect.
 1. Download **RealVNC Viewer** from the official website: <https://www.realvnc.com/en/connect/download/viewer/>. Alternatively, install it from the Microsoft Store.
 2. Open the application. You do not need to log in. Close the login window and enter the VNC server address (either the IP address or `{hostname}.local`).
 
-    ![RealVNC Viewer Accessed](/media/20241111-raspberrypi-setup-2/realvnc-viewer-accessed.png)
+    ![RealVNC Viewer Accessed](/media/20241120-raspberrypi-setup-2/realvnc-viewer-accessed.png)
     _**RealVNC Viewer** interface_
 
 3. Enter the username and password. Click "OK" to start.
 4. The Raspberry Pi desktop will appear, and the address will be saved in the address book.
 
-    ![RealVNC Viewer Connected](/media/20241111-raspberrypi-setup-2/realvnc-viewer-connected.png)
+    ![RealVNC Viewer Connected](/media/20241120-raspberrypi-setup-2/realvnc-viewer-connected.png)
     _**RealVNC Viewer** when connected_
 
 #### 3.3.3. Adjusting Resolution
@@ -210,7 +210,7 @@ If the resolution is unsatisfactory, adjust it through the Raspberry Pi configur
 2. Navigate to "Preferences" > "Raspberry Pi Configuration."
 3. Select the "Display" tab and choose your preferred "Headless Resolution."
 
-    ![raspi-config GUI resolution adjustment](/media/20241111-raspberrypi-setup-2/raspi-config-gui-resolution-adjustment.png)
+    ![raspi-config GUI resolution adjustment](/media/20241120-raspberrypi-setup-2/raspi-config-gui-resolution-adjustment.png)
     _Adjusting resolution through the GUI_
 
 > If you encounter the error `Cannot currently show the desktop`, resolve it by manually setting the resolution through the Raspberry Pi configuration menu. See Section [E.2](#e2-realvnc-viewer-error-cannot-currently-show-the-desktop) for more details.
@@ -224,7 +224,7 @@ If the resolution is unsatisfactory, adjust it through the Raspberry Pi configur
 On Windows 10, the Raspberry Pi device might not be recognized as an Ethernet gadget and may instead appear as a USB device under "Ports (COM & LPT)." This issue can be resolved by installing the **RNDIS/Ethernet Gadget** driver[^fn-nth-1].
 
 1. Download the RNDIS driver from this link: <https://modclouddownloadprod.blob.core.windows.net/shared/mod-duo-rndis.zip>.
-    - Alternatively, use this file link: [RNDIS/Ethernet Gadget](/media/20241111-raspberrypi-setup-2/mod-duo-rndis.zip)
+    - Alternatively, use this file link: [RNDIS/Ethernet Gadget](/media/20241120-raspberrypi-setup-2/mod-duo-rndis.zip)
 2. Extract the `mod-duo-rndis`{: .filepath } folder from the `.zip`{: .filepath } file.
 3. Open **Device Manager** and navigate to "Ports (COM & LPT)."
 4. Expand the section and locate the detected "USB Serial Device."
@@ -232,7 +232,7 @@ On Windows 10, the Raspberry Pi device might not be recognized as an Ethernet ga
 6. Choose "Browse my computer for driver software."
 7. Browse to the extracted folder, `mod-duo-rndis`{: .filepath }, and ensure "Include subfolders" is checked.
 
-    ![Device Manager USB Driver Update](/media/20241111-raspberrypi-setup-2/device-manager-driver-update.png)
+    ![Device Manager USB Driver Update](/media/20241120-raspberrypi-setup-2/device-manager-driver-update.png)
     _Browsing `mod-duo-rndis`{: .filepath } in the driver updater_
 
 8. In **Device Manager**, click "Action" > "Scan for hardware changes."
@@ -240,7 +240,7 @@ On Windows 10, the Raspberry Pi device might not be recognized as an Ethernet ga
 
 ### E.2. RealVNC Viewer Error: `Cannot currently show the desktop`
 
-![RealVNC Viewer Error on Showing the Desktop](/media/20241111-raspberrypi-setup-2/realvnc-viewer-error-cannot-show.png)
+![RealVNC Viewer Error on Showing the Desktop](/media/20241120-raspberrypi-setup-2/realvnc-viewer-error-cannot-show.png)
 _**RealVNC Viewer** error when the Raspberry Pi desktop cannot be displayed. Referenced from a Raspberry Pi forum discussion[^fn-nth-2]._  
 
 This error often occurs when no HDMI monitor is attached. Manually setting the display resolution resolves the issue.
@@ -249,17 +249,17 @@ This error often occurs when no HDMI monitor is attached. Manually setting the d
 2. Open the Raspberry Pi configuration menu by entering the command: `sudo raspi-config`.
 3. Navigate to "Display Options."
 
-    ![raspi-config Display Options 1](/media/20241111-raspberrypi-setup-2/raspi-config-display-options-1.png)
+    ![raspi-config Display Options 1](/media/20241120-raspberrypi-setup-2/raspi-config-display-options-1.png)
     _`raspi-config` menu page_
 
 4. Select "VNC Resolution."
 
-    ![raspi-config Display Options 2](/media/20241111-raspberrypi-setup-2/raspi-config-display-options-2.png)
+    ![raspi-config Display Options 2](/media/20241120-raspberrypi-setup-2/raspi-config-display-options-2.png)
     _`raspi-config` display options page_
 
 5. Choose your preferred resolution.
 
-    ![raspi-config VNC Resolution Adjustment](/media/20241111-raspberrypi-setup-2/raspi-config-vnc-resolution-adjustment.png)
+    ![raspi-config VNC Resolution Adjustment](/media/20241120-raspberrypi-setup-2/raspi-config-vnc-resolution-adjustment.png)
     _Adjusting VNC resolution_
 
 6. Reboot the Raspberry Pi.
