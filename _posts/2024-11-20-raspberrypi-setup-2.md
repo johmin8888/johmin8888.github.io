@@ -20,7 +20,7 @@ image:
 - RealVNC Viewer 7.12.1 (r21) x64
 - RealVNC Server 7.5.1
 {: .prompt-info }
-
+ 
 ## Introduction
 
 This post provides a guide to enabling 'gadget mode' on the Raspberry Pi 4 Model B using only a USB-C cable, without requiring a mouse, keyboard, or monitor. The setup can be completed entirely from your computer. The Raspberry Pi 4B is chosen because it is the most powerful Raspberry Pi device capable of running the 'legacy OS.' Raspberry Pi 5 cannot install the legacy OS, which simplifies the process of enabling gadget mode. While it is possible to enable gadget mode on a Raspberry Pi 5, it requires additional peripherals (mouse, keyboard, and monitor) to modify `/boot`{: .filepath } files.
