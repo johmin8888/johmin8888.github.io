@@ -29,7 +29,7 @@ This post provides a guide to enabling 'gadget mode' on the Raspberry Pi 4 Model
 - RPi 5 USB gadget mode possible?: <https://forums.raspberrypi.com/viewtopic.php?t=358573>  
 - Pi 5 dwc2 overlay fails #77: <https://github.com/raspberrypi/bookworm-feedback/issues/77>
 
-## 1. Modify `/boot`{: .filepath } files
+## 1. Modify boot files
 
 The Raspberry Pi OS is not configured for 'USB Gadget Mode' by default. To enable it, some files in `/boot`{: .filepath } or `/bootfs`{: .filepath } must be modified.
 
@@ -61,14 +61,10 @@ The Raspberry Pi OS is not configured for 'USB Gadget Mode' by default. To enabl
    {: file='/bootfs/cmdline.txt' }
 
    > What does `g_ether` mean? <br>
-   `g_ether` is one of several emulation modes for the Raspberry Pi when DWC2 is enabled: <br>
-    - **USB Ethernet** (`g_ether`) emulates a  USB network adapter, allowing the Pi to appear as a network interface to a connected host computer.
-    - **USB Serial** (`g_serial`) emulats a USB serial port.
-    - **USB Mass Storage** (`g_mass_storage`) emulates a USB flash drive or storage device.
-    - **HID Devices** (`g_hid`) emulates a USB keyboard, mouse, or other HID device.
+   `g_ether` is one of several emulation modes for the Raspberry Pi when DWC2 is enabled. **USB Ethernet** (`g_ether`) emulates a  USB network adapter, allowing the Pi to appear as a network interface to a connected host computer. For the other USB gadget modules, please refer to Section [A.1](#a1-common-usb-gadget-modules).
    {: .prompt-info }
 
-4. Create a file named `ssh`{: .filepath } in `/bootfs` with no extension and no contents.
+1. Create a file named `ssh`{: .filepath } in `/bootfs` with no extension and no contents.
    > You can create this file by renaming a text file anad removing the `.txt` extension using a text editor like VSCode.
    {: .prompt-tip }
 
@@ -167,7 +163,7 @@ Before using VNC, enable the VNC mode on the Raspberry Pi by accessing its confi
     _Raspberry Pi configuration prompt in **PuTTY**_
 
 3. In the "Raspberry Pi Software Configuration Tool (raspi-config)" menu, navigate to "Interface Options."
-   > Use the arrow keys to navigate and press Enter to select. Use the arrow keys to switch between "\<Select>", "\<Back>", and "\<Finish>".
+   > Use <kbd>&#8593;</kbd> and <kbd>&#8595;</kbd> keys to navigate and press <kbd>Enter</kbd> to select. Use <kbd>&#8592;</kbd> and <kbd>&#8594;</kbd> to switch between "\<Select>", "\<Back>", and "\<Finish>".
    {: .prompt-tip }
 
     ![raspi-config Interface Options 1](/media/20241120-raspberrypi-setup-2/raspi-config-interface-options-1.png)
@@ -216,12 +212,27 @@ If the resolution is unsatisfactory, adjust it through the Raspberry Pi configur
 > If you encounter the error `Cannot currently show the desktop`, resolve it by manually setting the resolution through the Raspberry Pi configuration menu. See Section [E.2](#e2-realvnc-viewer-error-cannot-currently-show-the-desktop) for more details.
 {: .prompt-warning }
 
+## A. Appendix
+
+### A.1. Common USB gadget modules
+
+- `g_ether` emulates a **USB Ethernet adapter**, allowing network communication between the device and the host. It is used for networking between the Raspberry Pi and a host such as via SSH over a USB cable.
+- `g_serial` emulates a **USB-to-serial converter**, enabling serial communication like a COM port. It is used for debugging or controlling the Raspberry Pi via serial connection.
+- `g_mass_storage` emulates a **USB flash drive or external storage device**, making the device appear as a storage medium to the host. It is enabled when sharing files with a host by emulating a USB flash drive.
+- `g_hid` emulates a **USB Human Interface Device (HID)**, such as a keyboard, mouse, or joystick.
+- `g_audio` emulates a **USB audio device**, such as a microphone or speaker. It is used to utilize the Raspberry Pi as a USB microphone or speaker.
+- `g_webcam` emulates a **USB Video Class (UVC) device**, making the device appear as a webcam. It is enabled to stream video from the Raspberry Pi's camera module as a USB webcam.
+- `g_midi` emulates a **USB MIDI device**, allowing the device to act as a musical instrument interface. It is used when connecting the Raspberry Pi to a MIDI-compatible musical instrument.
+- `g_multi` combines multiple functionalities (e.g., Ethernet + mass storage or Ethernet + serial).
+- `g_acm_ms` combines **serial (ACM)** and **mass storage**.
+- `g_ncm` emulates a **USB Ethernet device** using the NCM protocol, which is faster than RNDIS.
+- `g_cdc` emulates a **CDC Ethernet device**, providing an alternative USB networking.
 
 ## E. Error Notes
 
 ### E.1. Device is detected under the "Ports (COM & LPT)" tree
 
-On Windows 10, the Raspberry Pi device might not be recognized as an Ethernet gadget and may instead appear as a USB device under "Ports (COM & LPT)." This issue can be resolved by installing the **RNDIS/Ethernet Gadget** driver[^fn-nth-1].
+On Windows 10, the Raspberry Pi device might not be recognized as an Ethernet gadget and may instead appear as a USB device under "Ports (COM & LPT)." This issue can be resolved by installing the **RNDIS/Ethernet Gadget** driver[^1].
 
 1. Download the RNDIS driver from this link: <https://modclouddownloadprod.blob.core.windows.net/shared/mod-duo-rndis.zip>.
     - Alternatively, use this file link: [RNDIS/Ethernet Gadget](/media/20241120-raspberrypi-setup-2/mod-duo-rndis.zip)
@@ -241,7 +252,7 @@ On Windows 10, the Raspberry Pi device might not be recognized as an Ethernet ga
 ### E.2. RealVNC Viewer Error: `Cannot currently show the desktop`
 
 ![RealVNC Viewer Error on Showing the Desktop](/media/20241120-raspberrypi-setup-2/realvnc-viewer-error-cannot-show.png)
-_**RealVNC Viewer** error when the Raspberry Pi desktop cannot be displayed. Referenced from a Raspberry Pi forum discussion[^fn-nth-2]._  
+_**RealVNC Viewer** error when the Raspberry Pi desktop cannot be displayed. Referenced from a Raspberry Pi forum discussion[^2]._  
 
 This error often occurs when no HDMI monitor is attached. Manually setting the display resolution resolves the issue.
 
@@ -275,6 +286,6 @@ This error often occurs when no HDMI monitor is attached. Manually setting the d
 
 ## References
 
-[^fn-nth-1]: [Raspberry Pi Zero W Headless setup – Windows 10 RNDIS Driver issue resolved](https://www.factoryforward.com/pi-zero-w-headless-setup-windows10-rndis-driver-issue-resolved/)
+[^1]: [Raspberry Pi Zero W Headless setup – Windows 10 RNDIS Driver issue resolved](https://www.factoryforward.com/pi-zero-w-headless-setup-windows10-rndis-driver-issue-resolved/)
 
-[^fn-nth-2]: [\[VNC\] Cannot currently show the dekstop](https://forums.raspberrypi.com/viewtopic.php?t=216737)
+[^2]: [\[VNC\] Cannot currently show the dekstop](https://forums.raspberrypi.com/viewtopic.php?t=216737)

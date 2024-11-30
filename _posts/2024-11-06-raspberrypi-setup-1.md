@@ -202,7 +202,7 @@ _Windows formatter error_
 
 If the SD card is corrupted or has not been used for a long time, formatting may fail. Try using advanced options with **diskpart.exe**.
 
-1. Type `diskpart` in the search bar or in *Command Prompt* to open **diskpart.exe**.
+1. Type `diskpart` in the search bar or in **Command Prompt** to open **diskpart.exe**.
 2. Type `list disk` to see if the SD card is detected.
 3. Type `select disk {number}` to select the SD card drive.
 4. Type `clean` to erase all data on the card.
