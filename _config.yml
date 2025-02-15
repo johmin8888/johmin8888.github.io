@@ -59,7 +59,8 @@ webmaster_verifications:
 # Web Analytics Settings
 analytics:
   google:
-    id: # fill in your Google Analytics ID
+    id: "G-Q8M4EP5ZSX"
+    anonymize_ip: # true, false (default)
   goatcounter:
     id: # fill in your GoatCounter ID
   umami:
